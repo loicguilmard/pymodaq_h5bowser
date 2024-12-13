@@ -1,28 +1,27 @@
 [features]  # defines the plugin features contained into this plugin
-instruments = true  # true if plugin contains instrument classes (else false, notice the lowercase for toml files)
-extensions = false  # true if plugins contains dashboard extensions
+instruments = false  # true if plugin contains instrument classes (else false, notice the lowercase for toml files)
+extensions = true  # true if plugins contains dashboard extensions
 models = false  # true if plugins contains pid models
-h5exporters = false  # true if plugin contains custom h5 file exporters
+h5exporters = true  # true if plugin contains custom h5 file exporters
 scanners = false  # true if plugin contains custom scan layout (daq_scan extensions)
 
 [urls]
-package-url = 'https://github.com/PyMoDAQ/pymodaq_plugins_template' #todo modify url by your plugin url
+package-url = 'https://github.com/PyMoDAQ/pymodaq_h5browser'
 
 [project]
-name = "pymodaq_plugins_template" #todo modify template by your plugin short name
-description = 'some word about your plugin'
+name = "pymodaq_plugins_h5browser"
+description = 'Independant Hdf5 browser from the pymodaq project'
 dependencies = [
-    "pymodaq>=5.0.0",
-    #todo: list here all dependencies your package may have
+    "pymodaq_utils",
+    "pymodaq_gui>5.0",
+    "pymodaq_data>5.0",
 ]
 
 authors = [
-    {name = "Name Surname", email = "myname@test.fr"},
-    #todo: list here all authors of your plugin
+    {name = "Sebastien Wever", email = "sebastien.weber@cemes.fr"},
 ]
 maintainers = [
-    {name = "Name Surname", email = "myname@test.fr"},
-    #todo: list here all maintainers of your plugin
+    {name = "Loic GUILMARD", email = "loic.guilmard@cnrs.fr"},
 ]
 
 # nottodo: leave everything below as is!
@@ -47,6 +46,8 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: User Interfaces",
 ]
+[project.scripts]
+h5browser = "pymodaq_plugins_h5browser.app.h5browser:main"
 
 [build-system]
 requires = [
